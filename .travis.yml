@@ -11,6 +11,8 @@ notifications:
 node_js:
   - '10'
   - '8'
+before_script:
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then apt update && apt install x11-xserver-utils; fi
 script:
   - npm run lint
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then xvfb-run npm test; else npm test; fi
