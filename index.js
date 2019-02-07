@@ -8,6 +8,8 @@ if (process.platform === 'linux') {
   module.exports = require('./lib/win32')
 } else {
   module.exports = function unSupported () {
-    return Promise.reject(new Error('Currently unsupported platform. Pull requests welcome!'))
+    return new Promise((resolve, reject) => {
+      return reject(new Error('Currently unsupported platform. Pull requests welcome!'))
+    })
   }
 }
